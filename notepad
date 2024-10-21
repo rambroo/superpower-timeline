@@ -1,0 +1,220 @@
+// Timeline.js
+import React, { useEffect } from 'react';
+import './Timeline.css'; 
+import { gsap } from 'gsap';
+
+const Timeline = () => {
+  useEffect(() => {
+    gsap.defaults({ ease: "none" });
+
+    // Select the path element
+    const path = document.querySelector(".orangeLine");
+    const pathLength = path.getTotalLength();
+
+    // Set strokeDasharray and strokeDashoffset
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength;
+
+    // Main animation timeline for scrolling
+    const main = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#svg",
+        scrub: 2,
+        start: "top top",
+        end: "bottom center"
+      }
+    });
+
+    // Animate strokeDashoffset to reveal the line
+    main.fromTo(path, { strokeDashoffset: pathLength }, { strokeDashoffset: 0, duration: 1 });
+
+  }, []);
+  useEffect(() => {
+    gsap.defaults({ ease: "none" });
+
+    // Select the path element
+    const path = document.querySelector(".blurLine");
+    const pathLength = path.getTotalLength();
+
+    // Set strokeDasharray and strokeDashoffset
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength;
+
+    // Main animation timeline for scrolling
+    const main = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#svg",
+        scrub: 2,
+        start: "top top",
+        end: "bottom center"
+      }
+    });
+
+    // Animate strokeDashoffset to reveal the line
+    main.fromTo(path, { strokeDashoffset: pathLength }, { strokeDashoffset: 0, duration: 2 });
+
+  }, []);
+  
+
+
+  return (
+    <div>
+      <h1 className="header-section">SVG Scroll Color Change</h1>
+      <div id="svg-container">
+        {/* Static White Line SVG */}
+        <svg id="white-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 4320" preserveAspectRatio="xMidYMid meet">
+          <path className="whiteLine"
+                d="M117.297473,388.419002q904.628637-21.037875,1598.87852,224.404003c694.249883,245.441878-848.527637,624.123632-1318.373517,1002.805387s743.338259,532.959505,1030.855888,659.186757s364.656505,301.54288,56.101001,427.770131-610.098383,287.517628-799.43926,511.921631q-189.340877,224.404003-96.877638,315.853318"
+                fill="none" stroke="white" strokeWidth="5" />
+        </svg>
+
+        {/* Dynamic Orange Line SVG */}
+        <svg id="orange-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 4320" preserveAspectRatio="xMidYMid meet">
+          <path className="orangeLine"
+                d="M117.297473,388.419002q904.628637-21.037875,1598.87852,224.404003c694.249883,245.441878-848.527637,624.123632-1318.373517,1002.805387s743.338259,532.959505,1030.855888,659.186757s364.656505,301.54288,56.101001,427.770131-610.098383,287.517628-799.43926,511.921631q-189.340877,224.404003-96.877638,315.853318"
+                fill="none" stroke="orange" strokeWidth="5" />
+        </svg>
+        <svg id="orange-svg-blur" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 4320" preserveAspectRatio="xMidYMid meet">
+          <path className="blurLine"
+                d="M117.297473,388.419002q904.628637-21.037875,1598.87852,224.404003c694.249883,245.441878-848.527637,624.123632-1318.373517,1002.805387s743.338259,532.959505,1030.855888,659.186757s364.656505,301.54288,56.101001,427.770131-610.098383,287.517628-799.43926,511.921631q-189.340877,224.404003-96.877638,315.853318"
+                fill="none" stroke="orange" strokeWidth="24" />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+export default Timeline;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Timeline.css */
+body { 
+  height: 400vh; /* Large height for scrolling */
+  background: black;
+  color: white;
+  margin: 0;
+}
+
+.header-section {
+  margin: 20px auto;
+  text-align: center;
+  color: white;
+}
+
+#svg-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 70vh;
+  left: 0;
+}
+
+.whiteLine {
+  stroke-width: 2px;
+}
+
+.orangeLine {
+  stroke-width: 2px;
+  stroke-dasharray: 2000; /* Set to the maximum length of the path */
+  stroke-dashoffset: 2000; /* Initially hidden */
+  transition: stroke-dashoffset 0.1s ease; /* Smooth transition effect */
+
+}
+#orange-svg-blur{
+  filter: blur(48px);
+}
+
+
+
+
+
+
+<svg id="white-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 4320" preserveAspectRatio="xMidYMid meet">
+<path className="whiteLine"
+      d="M117.297473,388.419002q904.628637-21.037875,1598.87852,224.404003c694.249883,245.441878-848.527637,624.123632-1318.373517,1002.805387s743.338259,532.959505,1030.855888,659.186757s364.656505,301.54288,56.101001,427.770131-610.098383,287.517628-799.43926,511.921631q-189.340877,224.404003-96.877638,315.853318"
+      fill="none" stroke="white" strokeWidth="5" />
+</svg>
+
+{/* Dynamic Orange Line SVG */}
+<svg id="orange-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 4320" preserveAspectRatio="xMidYMid meet">
+<path className="orangeLine"
+      d="M117.297473,388.419002q904.628637-21.037875,1598.87852,224.404003c694.249883,245.441878-848.527637,624.123632-1318.373517,1002.805387s743.338259,532.959505,1030.855888,659.186757s364.656505,301.54288,56.101001,427.770131-610.098383,287.517628-799.43926,511.921631q-189.340877,224.404003-96.877638,315.853318"
+      fill="none" stroke="orange" strokeWidth="5" />
+</svg>
+
+{/* Orange Blurred Line */}
+<svg id="orange-svg-blur" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 4320" preserveAspectRatio="xMidYMid meet">
+<path className="blurLine"
+      d="M117.297473,388.419002q904.628637-21.037875,1598.87852,224.404003c694.249883,245.441878-848.527637,624.123632-1318.373517,1002.805387s743.338259,532.959505,1030.855888,659.186757s364.656505,301.54288,56.101001,427.770131-610.098383,287.517628-799.43926,511.921631q-189.340877,224.404003-96.877638,315.853318"
+      fill="none" stroke="orange" strokeWidth="24" />
+</svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<circle rx="17.229121" ry="17.229121" r="20"/>
+                <path d="M117.297473,386.774018q0,1.644985,17.229121,398.294106" transform="matrix(.999417 0.034153-.034153 0.999417 15.990901-3.780441)" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M121.393311,386.629823l.425105-305.915282" transform="translate(-1.382926 0.732624)" fill="none" stroke="white" stroke-width="2"/>
+                <ellipse rx="38.601" ry="36.083543" transform="matrix(.391306 0 0 0.441859 1095.947913 456.018858)" fill="white" stroke-width="0"/>
+                <path d="M1095.947913,456.018858v-319.174558" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M1095.947913,456.018858l15.104803,642.552232" transform="translate(.000001 0)" fill="none" stroke="white" stroke-width="2"/>
+                <ellipse rx="38.948201" ry="37.360182" transform="matrix(.364357 0 0 0.403549 1890.93997 753.986629)" fill="white" stroke-width="0"/>
+                <path d="M1890.93997,753.986629v727.434722" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M1890.93997,753.986629l-14.19105-402.787245" transform="translate(0 0.000001)" fill="none" stroke="white" stroke-width="2"/>
+                <ellipse rx="28.752091" ry="28.752091" transform="matrix(.760609 0 0 0.650332 1338.084439 1136.402395)" fill="white" stroke-width="0"/>
+                <path d="M1338.084439,1136.402395v743.763277" transform="translate(0 0.000001)" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M1338.084439,1136.402396q0-254.184658,0-256.35371" fill="none" stroke="white" stroke-width="2"/>
+                <ellipse rx="44.43534" ry="27.036608" transform="matrix(.694983 0 0 1 601.985379 1481.247427)" fill="white" stroke-width="0"/>
+                <ellipse rx="44.43534" ry="27.036608" transform="matrix(.694983 0 0 1 632.867185 2039.9135)" fill="white" stroke-width="0"/>
+                <ellipse rx="44.43534" ry="27.036608" transform="matrix(.694983 0 0 1 1417.965158 2263.919935)" fill="white" stroke-width="0"/>
+                <ellipse rx="44.43534" ry="27.036608" transform="matrix(.694983 0 0 1 1285.333534 2791.70087)" fill="white" stroke-width="0"/>
+                <path d="M601.985379,1481.247427v-601.198741v1078.518438" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M632.867185,2039.9135v385.056482" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M632.867185,2039.9135v-308.913949" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M1417.965158,2263.919935v-378.463409" transform="translate(0 0.000001)" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M1417.965158,2263.919935v348.708084" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M1285.333534,2791.70087v-332.67358" fill="none" stroke="white" stroke-width="2"/>
+                <path d="M1285.333534,2791.70087v303.992138" fill="none" stroke="white" stroke-width="2"/>
+
+                <line x1="0" y1="-238.659848" x2="0" y2="238.659849" transform="translate(601.985379 1719.907275)" fill="none" stroke="#3f5787" stroke-width="3"/>
+                <line x1="0" y1="259.980834" x2="0" y2="-259.980834" transform="translate(601.985379 1221.266593)" fill="none" stroke="#3f5787" stroke-width="3"/>

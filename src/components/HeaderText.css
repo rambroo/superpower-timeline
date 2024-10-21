@@ -1,0 +1,21 @@
+/* src/components/HeaderText.css */
+.header-text {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  text-align: center;
+}
+
+.header-text h1 {
+  font-size: 4rem;
+  color: white;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200%;
+  background-position: 100% 0;
+  opacity: 0;
+}

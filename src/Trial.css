@@ -1,0 +1,95 @@
+body { 
+    height: 400vh; /* Height to create scrollable area */
+    background: black;
+    color: white;
+  }
+  
+
+  svg {
+    position: absolute;
+    overflow: visible;
+    margin-top: 50vh; /* Adjust this value if necessary */
+  }
+  .textBox svg{
+    margin-top: 0.5vh;
+    left: -10px;
+  }
+  
+  .ball{
+    fill:  #FE8000;
+    visibility: hidden;
+  }
+  #orange-svg-blur {
+    filter: blur(48px);
+  }
+  .iVLine {
+    stroke: #FE8000;
+    stroke-width: 2px;
+    visibility: hidden;
+  }
+
+
+  
+.textBox{
+  position: absolute;
+  width: fit-content;
+  visibility: hidde;
+  height: 80px;
+  line-height: 1;
+  color: #FE8000;
+}
+
+@media (min-width: 1024px){
+  .iText01{
+    left: 100px; 
+    top: 350px;
+    width: fit-content;
+  }
+  .iText02{
+    left: 785px; 
+    top: 375px;
+    width: fit-content;
+  }
+  .iText03{
+    right: 40px; 
+    top:540px;
+    width: fit-content;
+  }
+  .iText04{
+    left: 765px; 
+    top:925px;
+    width: fit-content;
+  }
+  .iText05{
+    left: 100px; 
+    top:1100px;
+    width: fit-content;
+  }
+  .iText06{
+    left: 475px; 
+    top: 1550px;
+    width: fit-content;
+  }
+  .iText07{
+    left: 1020px; 
+    top:1650px;
+    width: fit-content;
+  }
+  .iText08{
+    right: 475px; 
+    top: 2080px;
+    width: fit-content;
+  }
+}
+@media (max-width: 768px) {
+  body{
+    height: 250vh;
+  }
+  .textBox{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    position: sticky;
+  }
+}

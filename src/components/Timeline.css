@@ -1,34 +1,106 @@
-/* body { 
-  height: 100vh; 
+/* Timeline.css */
+
+body { 
+  height: 400vh; /* Height to create scrollable area */
   background: black;
   color: white;
-  margin: 0;
+  width: 120%;
 }
 
-
-
-#svg-container {
-  position: relative;
-  width: 100%;
-  height: auto;
-}
 
 svg {
-  width: 100%;
-  height: auto;
   position: absolute;
-  left: 0;
+  overflow: visible;
+  margin-top: 50vh; /* Adjust this value if necessary */
+}
+.textBox svg{
+  margin-top: 0.5vh;
+  left: -10px;
 }
 
-.whiteLine, .orangeLine {
-  stroke-width: 2px;
+#orange-svg-blur{
+  stroke-width: 24px;
 }
-
+.ball{
+  fill:  #FE8000;
+  visibility: hidden;
+}
 #orange-svg-blur {
   filter: blur(48px);
 }
-
-.iLine,.ball{
+.iVLine {
+  stroke: #FE8000;
+  stroke-width: 2px;
   visibility: hidden;
 }
- */
+.vLine{
+  opacity: 0.4;
+}
+
+
+
+.textBox{
+position: absolute;
+width: fit-content;
+visibility: hidde;
+height: 80px;
+line-height: 1;
+color: white;
+}
+
+.timeLine {
+position: relative;
+width: 100%;
+height: 400vh; /* Full height of the viewport */
+overflow: hidden; /* Prevent overflow */
+}
+
+.textBox {
+position: absolute;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Example positions (adjust as needed) */
+.iText01 { top: 14%; left: 8%; }
+.iText02 { top: 16%; left: 59%; }
+.iText03 { top: 23%; right: 5%; }
+.iText04 { top: 36%; left: 58%; }
+.iText05 { top: 43%; left: 11%; }
+.iText06 { top: 60%; left: 35%; }
+.iText07 { top: 65%; left: 56%; }
+.iText08 { top: 80%; left: 45%; }
+
+
+
+
+
+/* Add media queries for responsiveness */
+@media (max-width: 768px) {
+
+svg {
+  height: 400vh; /* Maintain height proportionality */
+}
+
+#orange-svg-blur {
+  stroke-width: 10px; /* Scale blur thickness */
+}
+
+@keyframes scaleAnimation {
+  from {
+    transform: scale(1); /* Initial scale */
+  }
+  to {
+    transform: scale(0.4); /* Final scale */
+  }
+}
+
+.timeLine {
+  animation: scaleAnimation 3s ease-out both;
+  animation-timeline: view(); /* Bind the timeline to the animation */
+}
+
+
+}
+

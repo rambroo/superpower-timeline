@@ -1,28 +1,27 @@
-/* Timeline.css */
-
+/* General Styles */
 body { 
   height: 400vh; /* Height to create scrollable area */
   background: black;
   color: white;
-  width: 120%;
+  overflow-x: hidden;
 }
 
-
-svg {
+.mainSvg {
   position: absolute;
   overflow: visible;
-  margin-top: 50vh; /* Adjust this value if necessary */
+  top: 50vh; /* Adjust for desktop */
 }
-.textBox svg{
+
+.textBox svg {
   margin-top: 0.5vh;
   left: -10px;
 }
 
-#orange-svg-blur{
+#orange-svg-blur {
   stroke-width: 24px;
 }
-.ball{
-  fill:  #FE8000;
+.ball {
+  fill: #FE8000;
   visibility: hidden;
 }
 #orange-svg-blur {
@@ -33,36 +32,51 @@ svg {
   stroke-width: 2px;
   visibility: hidden;
 }
-.vLine{
+.vLine {
   opacity: 0.4;
 }
 
-
-
-.textBox{
-position: absolute;
-width: fit-content;
-visibility: hidde;
-height: 80px;
-line-height: 1;
-color: white;
-}
-
 .timeLine {
-position: relative;
-width: 100%;
-height: 400vh; /* Full height of the viewport */
-overflow: hidden; /* Prevent overflow */
+  position: relative;
+  width: 100%;
+  height: 400vh; /* Full height of the viewport */
 }
 
+
+/* Progress Bar Styles */
+.progress-bar {
+  position: fixed;
+  bottom: 10%;
+  left: 5%;
+  width: 2px;
+  height: 15vh;
+  background-color: #444; 
+  opacity: 1;
+}
+.progress-bar-2 {
+  position: fixed;
+  bottom: 0%;
+  left: 5%;
+  width: 2px;
+  height: 25vh;
+  background-color: white; 
+  transform-origin: top;
+  transform: scaleY(0); /* Start with no width */
+  transition: transform 0.2s ease-out;
+}
+
+/* TextBox Styles */
 .textBox {
-position: absolute;
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.5s ease, visibility 0.5s ease;
+  position: absolute;
+  width: fit-content;
+  visibility: hidden;
+  height: 80px;
+  line-height: 1;
+  color: white;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Example positions (adjust as needed) */
+/* Positioning for Text Boxes */
 .iText01 { top: 14%; left: 8%; }
 .iText02 { top: 16%; left: 59%; }
 .iText03 { top: 23%; right: 5%; }
@@ -73,34 +87,39 @@ transition: opacity 0.5s ease, visibility 0.5s ease;
 .iText08 { top: 80%; left: 45%; }
 
 
-
-
-
-/* Add media queries for responsiveness */
+/* Responsive Styles for Mobile */
 @media (max-width: 768px) {
-
-svg {
-  height: 400vh; /* Maintain height proportionality */
-}
-
-#orange-svg-blur {
-  stroke-width: 10px; /* Scale blur thickness */
-}
-
-@keyframes scaleAnimation {
-  from {
-    transform: scale(1); /* Initial scale */
+  .mainSvg {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    width: 150vw; /* Adjust width for visibility */
   }
-  to {
-    transform: scale(0.4); /* Final scale */
+
+  .timeLine {
+    position: relative;
+    width: 100%;
+    height: 400vh;
   }
-}
+  .textBox{
+    position: fixed;
+    left: 5%; /* Center horizontally */
+    top: 80%;
+    font-size: 16px; /* Smaller text for mobile */
+    max-width: 40%;
+  }
 
-.timeLine {
-  animation: scaleAnimation 3s ease-out both;
-  animation-timeline: view(); /* Bind the timeline to the animation */
-}
-
-
+  .progress-bar {
+    height: 10vh; /* Shorter bar */
+    bottom: 5%; /* Adjust position for mobile */
+    left: 95%;
+  }
+  
+  .progress-bar-2 {
+    height: 10vh; /* Adjust height */
+    bottom: 5%;
+    left: 95%;
+  }
 }
 

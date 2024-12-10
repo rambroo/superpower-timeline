@@ -1,16 +1,14 @@
 // src/App.js
 import React from 'react';
-// import './App.css';
-import './components/Timeline.css';
-import Timeline from './components/Timeline.js';
-
-
+import HeaderText from './components/HeaderText';
+import './components/HeaderText.css';
+import './App.css';
+import Timeline from './components/Timeline';
 
 function App() {
   return (
     <div className="App">
-    
-      {/* <Timeline/> */}
+       <HeaderText />
       <Timeline/>
     </div>
   );
